@@ -1,5 +1,16 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+// require('isomorphic-fetch');
+
+
+
+onload = (event) =>{
+    alert("All fields are required.")
+    document.getElementById("formSubmit").addEventListener("click", function(event){
+        event.preventDefault()
+        console.log("Unicorns! Puppy Paws! Kitty Noses!")
+    });
+}        
+
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
@@ -17,27 +28,33 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-   
+   if(testInput === ''){
+       return "Empty"
+   } else if (typeof testInput === 'number'){
+       return 'Is a Number'
+   } else if (isNaN(testInput)) {
+       return "Not a number"
+   }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
-}
+// async function myFetch() {
+//     let planetsReturned;
 
-async function myFetch() {
-    let planetsReturned;
+//     planetsReturned = await fetch().then( function(response) {
+//         });
 
-    planetsReturned = await fetch().then( function(response) {
-        });
+//     return planetsReturned;
+// }
 
-    return planetsReturned;
-}
+// function pickPlanet(planets) {
+// }
 
-function pickPlanet(planets) {
-}
 
-module.exports.addDestinationInfo = addDestinationInfo;
-module.exports.validateInput = validateInput;
-module.exports.formSubmission = formSubmission;
-module.exports.pickPlanet = pickPlanet; 
-module.exports.myFetch = myFetch;
+
+
+
+// module.exports.addDestinationInfo = addDestinationInfo;
+// module.exports.validateInput = validateInput;
+// module.exports.formSubmission = formSubmission;
+// module.exports.pickPlanet = pickPlanet; 
+// module.exports.myFetch = myFetch;
