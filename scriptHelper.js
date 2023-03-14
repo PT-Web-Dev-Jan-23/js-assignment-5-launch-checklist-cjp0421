@@ -4,10 +4,13 @@
 
 
 onload = (event) =>{
-    alert("All fields are required.")
+    
     document.getElementById("formSubmit").addEventListener("click", function(event){
+        
         event.preventDefault()
         console.log("Unicorns! Puppy Paws! Kitty Noses!")
+        if()
+        alert("All fields are required.")
     });
 }        
 
