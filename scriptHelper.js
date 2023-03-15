@@ -5,6 +5,49 @@
 
 onload = (event) =>{
     
+    function formSubmission(document, pilotName, copilotName, fuelLevel,cargoMass){
+        let unexplainedDocument = document;
+
+        function validateInput(testInput) {
+            if(testInput === pilotName|| testInput === copilotName){
+                if(testInput === ''){
+                    alert(testInput + " is empty!")
+                    return "Empty"
+                } 
+                if (!isNaN(testInput)){
+                    alert(testInput + " is a number! It should be letters!")
+                    return 'Is a Number'
+                } 
+            }
+            if(testInput === fuelLevel||testInput=== cargoMass){
+                if(testInput === ''){
+                    alert(testInput + " is empty!")
+                    return "Empty"
+                } 
+                if (isNaN(testInput)) {
+                    alert(testInput + " is letters! It should be a number!")
+                    return "Not a number"
+                } 
+            }
+         }
+         
+         validateInput(pilotName);
+         validateInput(copilotName);
+         validateInput(fuelLevel);
+         validateInput(cargoMass);
+         
+
+
+         return `${document}
+         ${pilotName}
+         ${copilotName}
+         ${fuelLevel}
+         ${cargoMass}
+         
+         This is a very badly explained assignment that doesn't make a lot of sense. `
+
+    }
+
     document.getElementById("formSubmit").addEventListener("click", function(event){
         
    let pilotName = document.querySelector("input[name=pilotName]");
@@ -15,17 +58,30 @@ onload = (event) =>{
         
         event.preventDefault()
         console.log("Unicorns! Puppy Paws! Kitty Noses!")
-
-        if(pilotName.value === ""|| copilotName.value === ""|| fuelLevel.value === ""|| cargoMass.value === ""){
-            alert("All fields are required.")
-        }
-
+function checkForEmpties(pilotName,copilotName,fuelLevel,cargoMass){
+    if(pilotName.value === ""|| copilotName.value === ""|| fuelLevel.value === ""|| cargoMass.value === ""){
+        alert("All fields are required.")
+        return false
+    }
+}          
     });
+  let document = "the directions didn't explain this so I have to guess. It's awful."
+  if(checkForEmpties){
+    formSubmission(document, pilotName,copilotName,fuelLevel,cargoMass)
+  }
+
 }        
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
+   
+   
+   
+   
+   
+   
+   
+    // Here is the HTML formatting for our mission target div.
    /*
                 <h2>Mission Destination</h2>
                 <ol>
@@ -39,15 +95,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
-function validateInput(testInput) {
-   if(testInput === ''){
-       return "Empty"
-   } else if (typeof testInput === 'number'){
-       return 'Is a Number'
-   } else if (isNaN(testInput)) {
-       return "Not a number"
-   }
-}
+
 
 // async function myFetch() {
 //     let planetsReturned;
