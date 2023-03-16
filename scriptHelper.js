@@ -62,7 +62,7 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
     if(fuelLevel.value < 10000){
         fuelStatusUpdate.innerHTML = `Fuel level is too low to launch shuttle.`;
         console.log(fuelLevel.value);
-        statusUpdateDiv.style.backgroundColor = "red";
+        launchStatus.style.color = "red";
         launchStatus.innerHTML = "Shuttle not ready for launch"
     }
     
@@ -73,21 +73,17 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
     
     if(cargoMass.value > 10000){
         cargoStatusUpdate.innerHTML = `Cargo mass too heavy to launch shuttle.`;
-        statusUpdateDiv.style.backgroundColor = "red";
+        launchStatus.style.color = "red";
         launchStatus.innerHTML = "Shuttle not ready for launch"
     }
     
     if(fuelLevel.value > 10000 && cargoMass.value < 10000){
-        statusUpdateDiv.style.backgroundColor = "green";
         launchStatus.innerHTML = "Shuttle is ready for launch"
+        launchStatus.style.color = "green";
         shuttleStatus = true;
      }
-    
 
-
-}
-
-
+    }
 }
 
 
@@ -112,35 +108,35 @@ submittedForm.addEventListener("click", function(event){
 })
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-
+    let missionDestinationTarget = document.getElementById("missionTarget");
    
+    missionDestinationTarget.innerHTML =
     // Here is the HTML formatting for our mission target div.
-   /*
+   `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
+                    <li>Name:${name} </li>
+                    <li>Diameter:${diameter} </li>
                     <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Distance from Earth:${distance} </li>
+                    <li>Number of Moons:${moons} </li>
                 </ol>
-                <img src="">
-   */
+                <img src="${imageUrl}">`
 }
 
 
 
-// async function myFetch() {
-//     let planetsReturned;
+async function myFetch() {
+    let planetsReturned;
 
-//     planetsReturned = await fetch().then( function(response) {
-//         });
+    planetsReturned = await fetch().then( function(response) {
+        });
 
-//     return planetsReturned;
-// }
+    return planetsReturned;
+}
 
-// function pickPlanet(planets) {
-// }
+function pickPlanet(planets) {
+}
 
 }
 
