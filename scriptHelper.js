@@ -4,6 +4,10 @@
 onload = (event) => {
 
 function validateInput(testInput) {
+    if(testInput.value===""){
+        console.log("Empty")
+        return 'Empty'
+    }  
     if(isNaN(testInput.value)){
         console.log(testInput.value + "NaN")
         return "Not a number"
@@ -35,7 +39,8 @@ if(validatedFuel === "Not a number"){
 if(validatedCargo === "Not a number"){
     alert ('You need to enter a name for cargo mass!')
 }   
-
+if(validatedPilot === "Empty"|| validatedCopilot=== "Empty"|| validatedFuel === "Empty"|| validatedCargo === "Empty")
+alert("All fields are required.")
 
 }
 let submittedForm = document.getElementById("formSubmit");
@@ -47,10 +52,7 @@ submittedForm.addEventListener("click", function(event){
     let fuel = document.querySelector("input[name=fuelLevel]");
     let cargo = document.querySelector("input[name=cargoMass]");
     
-    if(pilot.value === ""|| copilot.value === ""|| fuel.value === ""|| cargo.value === ""){
-        alert("All fields are required.")
-        return 'Empty'
-    }        
+      
     
         alert("You clicked the button!")
        
