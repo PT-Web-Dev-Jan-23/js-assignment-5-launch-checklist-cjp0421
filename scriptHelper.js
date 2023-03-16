@@ -3,15 +3,61 @@
 
 onload = (event) => {
 
+function validateInput(testInput) {
+    if(isNaN(testInput.value)){
+        console.log(testInput.value + "NaN")
+        return "Not a number"
+    }
+    if(!isNaN(testInput.value)){
+        console.log(testInput.value + "Num")
+        return "Number"
+    }
+}
 
-function formSubmission(document='somethingWickedThisWayComes',pilot,copilot, fuelLevel, cargoMass){
+function formSubmission(pilotName,copilotName, fuelLevel, cargoMass){
+
+    alert("You submitted the form.")
     
-    alert("You clicked the button!")
+let validatedPilot = validateInput(pilotName);
+let validatedCopilot = validateInput(copilotName);
+let validatedFuel = validateInput(fuelLevel);
+let validatedCargo = validateInput(cargoMass);
+
+if(validatedPilot === "Number"){
+    alert ('You need to enter a name for pilot name!')
+}
+if(validatedCopilot === "Number"){
+    alert ('You need to enter a name for copilot name!')
+}
+if(validatedFuel === "Not a number"){
+    alert ('You need to enter a number for fuel level!')
+}
+if(validatedCargo === "Not a number"){
+    alert ('You need to enter a name for cargo mass!')
+}   
+
 
 }
-let submitButton = document.getElementById("formSubmit");
-submitButton.addEventListener("click", function(){
-    formSubmission()
+let submittedForm = document.getElementById("formSubmit");
+submittedForm.addEventListener("click", function(event){
+    event.preventDefault();
+    
+    let pilot = document.querySelector("input[name=pilotName]"); 
+    let copilot = document.querySelector("input[name=copilotName]");
+    let fuel = document.querySelector("input[name=fuelLevel]");
+    let cargo = document.querySelector("input[name=cargoMass]");
+    
+    if(pilot.value === ""|| copilot.value === ""|| fuel.value === ""|| cargo.value === ""){
+        alert("All fields are required.")
+        return 'Empty'
+    }        
+    
+        alert("You clicked the button!")
+       
+        formSubmission(pilot, copilot,fuel,cargo);
+        return true
+    
+    
 })
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
