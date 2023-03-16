@@ -37,12 +37,61 @@ if(validatedFuel === "Not a number"){
     alert ('You need to enter a number for fuel level!')
 }
 if(validatedCargo === "Not a number"){
-    alert ('You need to enter a name for cargo mass!')
+    alert ('You need to enter a number for cargo mass!')
 }   
-if(validatedPilot === "Empty"|| validatedCopilot=== "Empty"|| validatedFuel === "Empty"|| validatedCargo === "Empty")
-alert("All fields are required.")
+if(validatedPilot === "Empty"|| validatedCopilot=== "Empty"|| validatedFuel === "Empty"|| validatedCargo === "Empty"){
+    alert("All fields are required.")
+}
+
+
+if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&validatedFuel==="Number"&&validatedCargo==="Number"){
+    alert("Info is validated.")
+    let statusUpdateDiv = document.getElementById("faultyItems")
+    let pilotStatusUpdate = document.getElementById("pilotStatus");
+    let copilotStatusUpdate = document.getElementById("copilotStatus");
+    let fuelStatusUpdate = document.getElementById("fuelStatus");
+    let cargoStatusUpdate = document.getElementById("cargoStatus");
+    let launchStatus = document.getElementById("launchStatus");
+
+    statusUpdateDiv.style.visibility = "visible";
+    pilotStatusUpdate.innerHTML = `Pilot ${pilotName.value} is ready for launch.`;
+    copilotStatusUpdate.innerHTML = `Co-pilot ${copilotName.value} is ready for launch.`;
+    
+    let shuttleStatus = false;
+
+    if(fuelLevel.value < 10000){
+        fuelStatusUpdate.innerHTML = `Fuel level is too low to launch shuttle.`;
+        console.log(fuelLevel.value);
+        statusUpdateDiv.style.backgroundColor = "red";
+        launchStatus.innerHTML = "Shuttle not ready for launch"
+    }
+    
+    // if(fuelLevel.value > 10000){
+    //     fuelStatusUpdate.innerHTML = `Fuel level is sufficient to launch shuttle.`;
+    //     console.log(fuelLevel.value);
+    // }
+    
+    if(cargoMass.value > 10000){
+        cargoStatusUpdate.innerHTML = `Cargo mass too heavy to launch shuttle.`;
+        statusUpdateDiv.style.backgroundColor = "red";
+        launchStatus.innerHTML = "Shuttle not ready for launch"
+    }
+    
+    if(fuelLevel.value > 10000 && cargoMass.value < 10000){
+        statusUpdateDiv.style.backgroundColor = "green";
+        launchStatus.innerHTML = "Shuttle is ready for launch"
+        shuttleStatus = true;
+     }
+    
+
 
 }
+
+
+}
+
+
+
 let submittedForm = document.getElementById("formSubmit");
 submittedForm.addEventListener("click", function(event){
     event.preventDefault();
