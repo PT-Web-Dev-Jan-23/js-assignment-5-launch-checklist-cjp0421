@@ -18,16 +18,16 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 
 function validateInput(testInput) {
-    if(testInput.value===""){
+    if(testInput===""){
         console.log("Empty")
         return 'Empty'
     }  
-    if(isNaN(testInput.value)){
-        console.log(testInput.value + "NaN")
+    if(isNaN(testInput)){
+        console.log(testInput + "NaN")
         return "Not a number"
     }
-    if(!isNaN(testInput.value)){
-        console.log(testInput.value + "Num")
+    if(!isNaN(testInput)){
+        console.log(testInput + "Num")
         return "Number"
     }
 }
@@ -60,7 +60,7 @@ if(validatedPilot === "Empty"|| validatedCopilot=== "Empty"|| validatedFuel === 
 
 if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&validatedFuel==="Number"&&validatedCargo==="Number"){
     alert("Info is validated.")
-    let statusUpdateDiv = document.getElementById("faultyItems")
+    let statusUpdateDiv = list;
     let pilotStatusUpdate = document.getElementById("pilotStatus");
     let copilotStatusUpdate = document.getElementById("copilotStatus");
     let fuelStatusUpdate = document.getElementById("fuelStatus");
@@ -68,25 +68,25 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
     let launchStatus = document.getElementById("launchStatus");
 
     statusUpdateDiv.style.visibility = "visible";
-    pilotStatusUpdate.innerHTML = `Pilot ${pilotName.value} is ready for launch.`;
-    copilotStatusUpdate.innerHTML = `Co-pilot ${copilotName.value} is ready for launch.`;
+    pilotStatusUpdate.innerHTML = `Pilot ${pilotName} is ready for launch.`;
+    copilotStatusUpdate.innerHTML = `Co-pilot ${copilotName} is ready for launch.`;
     
     let shuttleStatus = false;
 
-    if(fuelLevel.value < 10000){
+    if(fuelLevel < 10000){
         fuelStatusUpdate.innerHTML = `Fuel level is too low to launch shuttle.`;
-        console.log(fuelLevel.value);
+        console.log(fuelLevel);
         launchStatus.style.color = "red";
         launchStatus.innerHTML = "Shuttle not ready for launch"
     }
     
-    if(cargoMass.value > 10000){
+    if(cargoMass > 10000){
         cargoStatusUpdate.innerHTML = `Cargo mass too heavy to launch shuttle.`;
         launchStatus.style.color = "red";
         launchStatus.innerHTML = "Shuttle not ready for launch"
     }
     
-    if(fuelLevel.value > 10000 && cargoMass.value < 10000){
+    if(fuelLevel > 10000 && cargoMass < 10000){
         launchStatus.innerHTML = "Shuttle is ready for launch"
         launchStatus.style.color = "green";
         shuttleStatus = true;
@@ -95,23 +95,23 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
     }
 }
 
-let submittedForm = document.getElementById("formSubmit");
+// let submittedForm = document.getElementById("formSubmit");
 
-submittedForm.addEventListener("click", function(event){
-    event.preventDefault();
+// submittedForm.addEventListener("click", function(event){
+//     event.preventDefault();
     
-    let pilot = document.querySelector("input[name=pilotName]"); 
-    let copilot = document.querySelector("input[name=copilotName]");
-    let fuel = document.querySelector("input[name=fuelLevel]");
-    let cargo = document.querySelector("input[name=cargoMass]");
+//     let pilot = document.querySelector("input[name=pilotName]"); 
+//     let copilot = document.querySelector("input[name=copilotName]");
+//     let fuel = document.querySelector("input[name=fuelLevel]");
+//     let cargo = document.querySelector("input[name=cargoMass]");
     
       
     
-        alert("You clicked the button!")
+//         
        
-        formSubmission(pilot, copilot,fuel,cargo);
-        return true
-})
+//         formSubmission(pilot, copilot,fuel,cargo);
+//         return true
+// })
 
 
 
