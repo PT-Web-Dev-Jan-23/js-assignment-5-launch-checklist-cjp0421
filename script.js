@@ -4,12 +4,12 @@
 
 
 window.addEventListener("load", function() {
-
-   let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-  
-let listedPlanetsResponse = myFetch();
-   listedPlanetsResponse.then(function (result) {
+   let listedPlanets;
+   let listedPlanetsResponse = myFetch();
+
+
+    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
    }).then(function () {
@@ -19,7 +19,7 @@ let listedPlanetsResponse = myFetch();
     addDestinationInfo(document,selectedPlanet.name, selectedPlanet.diameter,selectedPlanet.star,selectedPlanet.distance,selectedPlanet.moons, selectedPlanet.image);
     })
     let list = document.getElementById("faultyItems");
-    list.style.visibility = 'hidden';
+    list.style.visibility = "hidden";
     let form = document.querySelector("form");
 
     form.addEventListener("submit", function(event){
@@ -35,7 +35,7 @@ let listedPlanetsResponse = myFetch();
  
         let cargoInput = document.querySelector("input[name=cargoMass]");
         let cargoLevel = Number(cargoInput.value);
-        
+
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
     })
    

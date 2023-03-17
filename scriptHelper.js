@@ -13,6 +13,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Number of Moons:${moons} </li>
                 </ol>
                 <img src="${imageUrl}">`;
+                
 }
 
 
@@ -95,42 +96,22 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
     }
 }
 
-// let submittedForm = document.getElementById("formSubmit");
-
-// submittedForm.addEventListener("click", function(event){
-//     event.preventDefault();
-    
-//     let pilot = document.querySelector("input[name=pilotName]"); 
-//     let copilot = document.querySelector("input[name=copilotName]");
-//     let fuel = document.querySelector("input[name=fuelLevel]");
-//     let cargo = document.querySelector("input[name=cargoMass]");
-    
-      
-    
-//         
-       
-//         formSubmission(pilot, copilot,fuel,cargo);
-//         return true
-// })
-
-
-
 
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then(function(response) {
-    response.json().then(function(data){
-        console.log(data);
-    })
+    planetsReturned = 
+    await fetch("https://handlers.education.launchcode.org/static/planets.json").
+    then(function(response) {
+        return response.json()
 });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    let planetIndex = Math.floor(Math.random() * 6);
+    let planetIndex = Math.floor(Math.random() * planets.length);
     
     return planets[planetIndex];
 }
