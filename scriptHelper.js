@@ -1,5 +1,5 @@
 // Write your helper functions here!
-// require('isomorphic-fetch');
+require('isomorphic-fetch');
 
 onload = (event) => {
 
@@ -108,42 +108,52 @@ submittedForm.addEventListener("click", function(event){
 })
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    let missionDestinationTarget = document.getElementById("missionTarget");
-   
-    missionDestinationTarget.innerHTML =
-    // Here is the HTML formatting for our mission target div.
-   `
-                <h2>Mission Destination</h2>
-                <ol>
-                    <li>Name:${name} </li>
-                    <li>Diameter:${diameter} </li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth:${distance} </li>
-                    <li>Number of Moons:${moons} </li>
-                </ol>
-                <img src="${imageUrl}">`
-}
 
+    // document.innerHTML +=
+//     // Here is the HTML formatting for our mission target div.
+//    `<h2>Mission Destination</h2>
+//                 <ol>
+//                     <li>Name:${name} </li>
+//                     <li>Diameter:${diameter} </li>
+//                     <li>Star: ${star}</li>
+//                     <li>Distance from Earth:${distance} </li>
+//                     <li>Number of Moons:${moons} </li>
+//                 </ol>
+//                 <img src="${imageUrl}">`;
+}
+addDestinationInfo();
 
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
-        });
+    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then(function(response) {
+    response.json().then(function(data){
+        console.log(data);
+    })
+});
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-}
+    let planetIndex = Math.floor(Math.random() * 6);
+    
+ //let missionDestinationTarget = document.getElementById("missionTarget");
 
 }
 
 
+myFetch();
+pickPlanet(1);
 
-// module.exports.addDestinationInfo = addDestinationInfo;
-// module.exports.validateInput = validateInput;
-// module.exports.formSubmission = formSubmission;
-// module.exports.pickPlanet = pickPlanet; 
-// module.exports.myFetch = myFetch;
+
+}
+
+
+
+module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.validateInput = validateInput;
+module.exports.formSubmission = formSubmission;
+module.exports.pickPlanet = pickPlanet; 
+module.exports.myFetch = myFetch;
