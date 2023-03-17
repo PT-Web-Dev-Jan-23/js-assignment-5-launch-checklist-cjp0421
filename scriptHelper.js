@@ -1,7 +1,21 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
+// onload = (event) => {
+function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+    let destinationData = document.getElementById("missionTarget");
+    destinationData.innerHTML =
+  `<h2>Mission Destination</h2>
+                <ol>
+                    <li>Name:${name} </li>
+                    <li>Diameter:${diameter} </li>
+                    <li>Star: ${star}</li>
+                    <li>Distance from Earth:${distance} </li>
+                    <li>Number of Moons:${moons} </li>
+                </ol>
+                <img src="${imageUrl}">`;
+}
 
-onload = (event) => {
+
 
 function validateInput(testInput) {
     if(testInput.value===""){
@@ -18,7 +32,7 @@ function validateInput(testInput) {
     }
 }
 
-function formSubmission(pilotName,copilotName, fuelLevel, cargoMass){
+function formSubmission(document, list, pilotName,copilotName, fuelLevel, cargoMass){
 
     alert("You submitted the form.")
     
@@ -66,11 +80,6 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
         launchStatus.innerHTML = "Shuttle not ready for launch"
     }
     
-    // if(fuelLevel.value > 10000){
-    //     fuelStatusUpdate.innerHTML = `Fuel level is sufficient to launch shuttle.`;
-    //     console.log(fuelLevel.value);
-    // }
-    
     if(cargoMass.value > 10000){
         cargoStatusUpdate.innerHTML = `Cargo mass too heavy to launch shuttle.`;
         launchStatus.style.color = "red";
@@ -86,9 +95,8 @@ if(validatedPilot === "Not a number"&&validatedCopilot ==="Not a number"&&valida
     }
 }
 
-
-
 let submittedForm = document.getElementById("formSubmit");
+
 submittedForm.addEventListener("click", function(event){
     event.preventDefault();
     
@@ -103,25 +111,10 @@ submittedForm.addEventListener("click", function(event){
        
         formSubmission(pilot, copilot,fuel,cargo);
         return true
-    
-    
 })
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 
-    // document.innerHTML +=
-//     // Here is the HTML formatting for our mission target div.
-//    `<h2>Mission Destination</h2>
-//                 <ol>
-//                     <li>Name:${name} </li>
-//                     <li>Diameter:${diameter} </li>
-//                     <li>Star: ${star}</li>
-//                     <li>Distance from Earth:${distance} </li>
-//                     <li>Number of Moons:${moons} </li>
-//                 </ol>
-//                 <img src="${imageUrl}">`;
-}
-addDestinationInfo();
+
 
 
 async function myFetch() {
@@ -139,16 +132,10 @@ async function myFetch() {
 function pickPlanet(planets) {
     let planetIndex = Math.floor(Math.random() * 6);
     
- //let missionDestinationTarget = document.getElementById("missionTarget");
-
+    return planets[planetIndex];
 }
 
-
-myFetch();
-pickPlanet(1);
-
-
-}
+//}
 
 
 
